@@ -7,8 +7,8 @@ import { ReactComponent as Logo } from "../assets/crown.svg";
 export default function Header() {
   const [nav, setNav] = useState(false);
   return (
-    <nav className="bg-white border-gray-200 px-2 sm:px-4 py-5 rounded dark:bg-gray-800">
-      <div className="container flex flex-wrap justify-between items-center mx-auto">
+    <nav className="bg-white border-gray-200 px-2 sm:px-4 py-5 rounded dark:bg-gray-800 drop-shadow-sm">
+      <div className="container flex flex-wrap justify-between items-center mx-auto lg:px-6">
         <a href="https://flowbite.com" className="flex items-center">
           <Logo className="px-2 mb-2 mr-2" />
           <span className="self-center text-lg whitespace-nowrap dark:text-white text-gray-700">
