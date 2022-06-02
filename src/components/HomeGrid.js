@@ -1,5 +1,7 @@
 import "../css/Home.styles.css";
 
+import { Outlet, Link } from "react-router-dom";
+
 export default function HomeGrid() {
   return (
     <>
@@ -18,9 +20,11 @@ export default function HomeGrid() {
             <img
               className="home__image"
               src="https://i.ibb.co/SXZvYHs/irene-kredenets-DDqx-X0-7v-KE-unsplash-1.png"
-              alt="shoe-image"
+              alt="mens"
             />
-            <button className="home__button">Mens</button>
+            <Link className="home__button" to="/mens">
+              Mens
+            </Link>
             <div className="absolute opacity-0 group-hover:opacity-100 transition duration-500 bottom-3 py-6 z-0 px-20 w-36 bg-white bg-opacity-50"></div>
           </div>
           <div className="relative group flex justify-center items-center h-full w-full">
@@ -29,7 +33,9 @@ export default function HomeGrid() {
               src="https://i.ibb.co/Hd1pVxW/louis-mornaud-Ju-6-TPKXd-Bs-unsplash-1-2.png"
               alt="watch-image"
             />
-            <button className="home__button">Watches</button>
+            <Link className="home__button" to="/mens">
+              Womens
+            </Link>
             <div className="absolute opacity-0 group-hover:opacity-100 transition duration-500 bottom-3 py-6 z-0 px-20 w-36 bg-white bg-opacity-50"></div>
           </div>
         </div>
@@ -40,7 +46,9 @@ export default function HomeGrid() {
             src="https://i.ibb.co/PTtRBLL/olive-tatiane-Im-Ez-F9-B91-Mk-unsplash-1.png"
             alt="girl-image"
           />
-          <button className="home__button">Accessories</button>
+          <Link className="home__button" to="/mens">
+            Mens
+          </Link>
           <div className="absolute opacity-0 group-hover:opacity-100 transition duration-500 bottom-3 py-6 z-0 px-20 w-36 bg-white bg-opacity-50"></div>
         </div>
 
@@ -55,7 +63,9 @@ export default function HomeGrid() {
             src="https://i.ibb.co/sQgHwHn/olive-tatiane-Im-Ez-F9-B91-Mk-unsplash-1.png"
             alt="olive-tatiane-Im-Ez-F9-B91-Mk-unsplash-2"
           />
-          <button className="home__button">Accessories</button>
+          <Link className="home__button" to="/mens">
+            Mens
+          </Link>{" "}
           <div className="absolute opacity-0 group-hover:opacity-100 transition duration-500 bottom-3 py-6 z-0 px-20 w-36 bg-white bg-opacity-50"></div>
         </div>
       </div>
@@ -70,9 +80,12 @@ export default function HomeGrid() {
           src="https://i.ibb.co/sQgHwHn/olive-tatiane-Im-Ez-F9-B91-Mk-unsplash-1.png"
           alt="olive-tatiane-Im-Ez-F9-B91-Mk-unsplash-2"
         />
-        <button className="home__button">Accessories</button>
+        <Link className="home__button" to="/mens">
+          Mens
+        </Link>{" "}
         <div className="absolute opacity-0 group-hover:opacity-100 transition duration-500 bottom-3 py-6 z-0 px-20 w-36 bg-white bg-opacity-50"></div>
       </div>
+      <Outlet />
     </>
   );
 }
