@@ -1,5 +1,9 @@
 import React from "react";
 
+import "../css/Header.styles.css";
+
+import { NavLink, Outlet } from "react-router-dom";
+
 export default function Footer() {
   return (
     <>
@@ -15,24 +19,40 @@ export default function Footer() {
           </a>
           <ul className="flex flex-wrap justify-center mb-6 text-sm text-gray-500 sm:mb-0 dark:text-gray-400 ">
             <li>
-              <a href="#" className="mr-4 hover:underline md:mr-6 ">
+              <NavLink
+                to="/"
+                className={({ isActive }) =>
+                  isActive
+                    ? "mx-4 text-black font-medium"
+                    : "mx-4 hover:underline md:mr-6"
+                }
+              >
                 Home
-              </a>
+              </NavLink>
             </li>
             <li>
-              <a href="#" className="mr-4 hover:underline md:mr-6">
+              <NavLink
+                to="shop"
+                className={({ isActive }) =>
+                  isActive
+                    ? "mx-4 text-black font-medium"
+                    : "mx-4 hover:underline "
+                }
+              >
                 Shop
-              </a>
+              </NavLink>
             </li>
             <li>
-              <a href="#" className="mr-4 hover:underline md:mr-6 ">
-                About
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:underline">
-                Contact
-              </a>
+              <NavLink
+                to="sign-in"
+                className={({ isActive }) =>
+                  isActive
+                    ? "mx-4 text-black font-medium"
+                    : "mx-4 hover:underline "
+                }
+              >
+                Sign In
+              </NavLink>
             </li>
           </ul>
         </div>
@@ -40,6 +60,7 @@ export default function Footer() {
           © 2022 Clothing App™
         </span>
       </footer>
+      <Outlet />
     </>
   );
 }

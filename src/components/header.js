@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import "../css/Header.styles.css";
+
 import { Transition } from "@headlessui/react";
 
 import { ReactComponent as Logo } from "../assets/crown.svg";
@@ -15,12 +17,7 @@ export default function Header() {
     <>
       <nav className="bg-white border-gray-200 px-2 sm:px-4 py-5 rounded dark:bg-gray-800 drop-shadow-sm">
         <div className="container flex flex-wrap justify-between items-center mx-auto lg:px-6">
-          <NavLink
-            to="/"
-            exact={true}
-            className={`flex items-center ${({ isActive }) =>
-              isActive ? "" : ""}`}
-          >
+          <NavLink to="/" exact={true} className="flex items-center">
             <Logo className="px-2 mb-2 mr-2" />
             <span className="self-center text-lg whitespace-nowrap dark:text-white text-gray-700">
               Clothing App
@@ -73,9 +70,7 @@ export default function Header() {
                 <NavLink
                   to="/"
                   exact={true}
-                  className={`block py-2 pr-4 pl-3 text-gray-500 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-gray-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-800${({
-                    isActive,
-                  }) => (isActive ? activeClassName : "")}`}
+                  className={({ isActive }) => (isActive ? " bold" : "link")}
                 >
                   Home
                 </NavLink>
@@ -83,10 +78,7 @@ export default function Header() {
               <li>
                 <NavLink
                   to="/shop"
-                  className={`block py-2 pr-4 pl-3 text-gray-500 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-gray-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-800`}
-                  className={({ isActive }) =>
-                    isActive ? "underline" : undefined
-                  }
+                  className={({ isActive }) => (isActive ? "bold" : "link")}
                 >
                   Shop
                 </NavLink>
@@ -94,9 +86,17 @@ export default function Header() {
               <li>
                 <NavLink
                   to="/cart"
-                  className="block py-2 pr-4 pl-3 text-gray-500 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-gray-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-800"
+                  className={({ isActive }) => (isActive ? " bold" : "link")}
                 >
                   Cart
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/sign-in"
+                  className={({ isActive }) => (isActive ? " bold" : "link")}
+                >
+                  Sign In
                 </NavLink>
               </li>
             </ul>
