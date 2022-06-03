@@ -7,13 +7,13 @@ import { NavLink, Outlet } from "react-router-dom";
 export default function Footer() {
   return (
     <>
-      <footer className="p-4 bg-white  shadow-md	shadow-gray dark:bg-gray-800">
-        <div className="sm:flex sm:items-center sm:justify-between md:px-4 lg:px-10 ">
+      <footer className="p-4 bg-white  shadow-md pt-2	shadow-black drop-shadow-xl	 dark:bg-gray-800">
+        <div className="sm:flex sm:items-center sm:justify-between md:px-4 lg:px-10 pt-2">
           <a
             href="https://flowbite.com"
             className="flex  justify-center mb-4 sm:mb-0"
           >
-            <span className=" text-xl font-semibold whitespace-nowrap dark:text-white pb-3">
+            <span className=" text-xl font-semibold whitespace-nowrap dark:text-white ">
               Clothing App
             </span>
           </a>
