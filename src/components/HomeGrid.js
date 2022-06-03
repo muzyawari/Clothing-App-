@@ -10,7 +10,7 @@ export default function HomeGrid() {
           <img
             className="home__image"
             src="https://i.ibb.co/ThPFmzv/omid-armin-m-VSb6-PFk-VXw-unsplash-1-1.png"
-            alt="girl-image"
+            alt=""
           />
           <button className="home__button">Womens</button>
         </div>
@@ -31,7 +31,7 @@ export default function HomeGrid() {
             <img
               className="home__image"
               src="https://i.ibb.co/Hd1pVxW/louis-mornaud-Ju-6-TPKXd-Bs-unsplash-1-2.png"
-              alt="watch-image"
+              alt=""
             />
             <Link className="home__button" to="/mens">
               Womens
@@ -44,7 +44,7 @@ export default function HomeGrid() {
           <img
             className="home__image"
             src="https://i.ibb.co/PTtRBLL/olive-tatiane-Im-Ez-F9-B91-Mk-unsplash-1.png"
-            alt="girl-image"
+            alt=""
           />
           <Link className="home__button" to="/mens">
             Mens
@@ -56,7 +56,7 @@ export default function HomeGrid() {
           <img
             className="object-center object-cover h-full w-full hidden md:block"
             src="https://i.ibb.co/6FjW19n/olive-tatiane-Im-Ez-F9-B91-Mk-unsplash-2.png"
-            alt="girl-image"
+            alt=""
           />
           <img
             className="object-center object-cover h-full w-full md:hidden"
@@ -73,7 +73,7 @@ export default function HomeGrid() {
         <img
           className="object-center object-cover h-full w-full hidden md:block"
           src="https://i.ibb.co/6FjW19n/olive-tatiane-Im-Ez-F9-B91-Mk-unsplash-2.png"
-          alt="girl-image"
+          alt=""
         />
         <img
           className="object-center object-cover h-full w-full sm:hidden"

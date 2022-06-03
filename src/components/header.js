@@ -2,8 +2,6 @@ import { useState } from "react";
 
 import "../css/Header.styles.css";
 
-import { Transition } from "@headlessui/react";
-
 import { ReactComponent as Logo } from "../assets/crown.svg";
 
 import { NavLink, Outlet } from "react-router-dom";
@@ -11,13 +9,11 @@ import { NavLink, Outlet } from "react-router-dom";
 export default function Header() {
   const [nav, setNav] = useState(false);
 
-  let activeClassName = "underline";
-
   return (
     <>
       <nav className="bg-white border-gray-200 px-2 sm:px-4 py-5 rounded dark:bg-gray-800 drop-shadow-sm">
         <div className="container flex flex-wrap justify-between items-center mx-auto lg:px-6">
-          <NavLink to="/" exact={true} className="flex items-center">
+          <NavLink to="/" exact={"true"} className="flex items-center">
             <Logo className="px-2 mb-2 mr-2" />
             <span className="self-center text-lg whitespace-nowrap dark:text-white text-gray-700">
               Clothing App
@@ -40,7 +36,6 @@ export default function Header() {
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  fill-rule="evenodd"
                   d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
                   clipRule="evenodd"
                 ></path>
@@ -69,7 +64,7 @@ export default function Header() {
               <li>
                 <NavLink
                   to="/"
-                  exact={true}
+                  exact={"true"}
                   className={({ isActive }) => (isActive ? " bold" : "link")}
                 >
                   Home
