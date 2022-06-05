@@ -6,16 +6,12 @@ import PulseLoader from "react-spinners/PulseLoader";
 
 import { logInWithEmailAndPassword } from "../firebase";
 
-import { UserContext } from "../contexts/User.Context";
-
 export default function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
   const [message, setMessage] = useState(false);
   const [load, setLoad] = useState(false);
-
-  const { setCurrentUser } = useContext(UserContext);
 
   const handleSignUpForm = async (e) => {
     e.preventDefault();
@@ -26,7 +22,6 @@ export default function SignIn() {
       const { user } = await logInWithEmailAndPassword(email, password);
 
       if (user !== null) {
-        setCurrentUser(user);
         setMessage(true);
         setEmail("");
         setPassword("");

@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+
 import { Link } from "react-router-dom";
 
 import PulseLoader from "react-spinners/PulseLoader";
@@ -11,6 +12,7 @@ export default function SignUp() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const [message, setMessage] = useState(false);
   const [load, setLoad] = useState(false);
 
@@ -19,20 +21,36 @@ export default function SignUp() {
 
     if (password !== confirmPassword) {
       setError(true);
+      setErrorMessage("Your Passwords Do Not Match");
       return;
     }
 
     setLoad(true);
 
-    await registerWithEmailAndPassword(fullName, email, password);
+    try {
+      const { user } = await registerWithEmailAndPassword(
+        fullName,
+        email,
+        password
+      );
 
-    setFullName("");
-    setEmail("");
-    setPassword("");
-    setConfirmPassword("");
+      if (user !== null) {
+        setMessage(true);
 
-    setLoad(false);
-    setError(false);
+        setLoad(false);
+        setError(false);
+
+        setFullName("");
+        setEmail("");
+        setPassword("");
+        setConfirmPassword("");
+      }
+    } catch (error) {
+      console.log(error);
+      setError(true);
+      setErrorMessage(error.message);
+      setLoad(false);
+    }
   };
 
   return (
@@ -63,7 +81,7 @@ export default function SignUp() {
                 ></path>
               </svg>
               <div className="ml-3 text-sm font-medium text-red-400 dark:text-red-400">
-                Incorrect username or password.
+                {errorMessage}
               </div>
               <button
                 type="button"

@@ -6,14 +6,20 @@ import { ReactComponent as Logo } from "../assets/crown.svg";
 
 import { NavLink, Outlet } from "react-router-dom";
 
+import { signOutUser } from "../firebase";
+
 import { UserContext } from "../contexts/User.Context";
 
 export default function Header() {
   const [nav, setNav] = useState(false);
 
-  const { currentUser } = useContext(UserContext);
+  const { currentUser, setCurrentUser } = useContext(UserContext);
 
-  console.log(currentUser);
+  const signOutHandler = async () => {
+    await signOutUser();
+
+    setCurrentUser(null);
+  };
 
   return (
     <>
@@ -61,7 +67,6 @@ export default function Header() {
               </svg>
             )}
           </button>
-
           <div
             className={`w-full md:block md:w-auto ${nav ? "" : "hidden"}`}
             id="mobile-menu"
@@ -95,14 +100,22 @@ export default function Header() {
                   Cart
                 </NavLink>
               </li>
-              <li>
-                <NavLink
-                  to="/sign-in"
-                  className={({ isActive }) => (isActive ? " bold" : "link")}
-                >
-                  Sign In
-                </NavLink>
-              </li>
+              {currentUser ? (
+                <li>
+                  <button className="link" onClick={signOutHandler}>
+                    Sign Out
+                  </button>
+                </li>
+              ) : (
+                <li>
+                  <NavLink
+                    to="/sign-in"
+                    className={({ isActive }) => (isActive ? " bold" : "link")}
+                  >
+                    Sign In
+                  </NavLink>
+                </li>
+              )}
             </ul>
           </div>
         </div>
