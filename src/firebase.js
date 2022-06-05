@@ -49,3 +49,11 @@ export const signOutUser = async () => await signOut(auth);
 
 export const onAuthStateChangedListener = (callback) =>
   onAuthStateChanged(auth, callback);
+
+const colRef = collection(db, "todo-items");
+
+export const getProductDate = async () => {
+  const data = await getDocs(colRef);
+
+  console.log(data);
+};

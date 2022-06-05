@@ -2,7 +2,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Home from "./components/Home";
 
-import Mens from "./pages/Mens";
+import Mens from "./pages/category/Mens";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 

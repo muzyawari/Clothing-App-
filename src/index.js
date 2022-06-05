@@ -7,12 +7,16 @@ import { BrowserRouter } from "react-router-dom";
 
 import { UserProvider } from "./contexts/User.Context";
 
+import { ProductProvider } from "./contexts/Products.Context";
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
       <UserProvider>
-        <App />
+        <ProductProvider>
+          <App />
+        </ProductProvider>
       </UserProvider>
     </BrowserRouter>
   </React.StrictMode>
