@@ -120,7 +120,7 @@ export default function SignUp() {
 
           <input
             type="text"
-            className="block border border-grey-light w-full p-3 rounded mb-4 focus:outline-none focus:border-blue-500 "
+            className="block border text-gray-700 border-grey-light w-full p-3 rounded mb-4 focus:outline-none focus:border-blue-500 "
             name="fullname"
             placeholder="Full Name"
             required
@@ -129,7 +129,7 @@ export default function SignUp() {
           />
           <input
             type="text"
-            className="block border border-grey-light w-full p-3 rounded mb-4 focus:outline-none focus:border-blue-500 focus:invalid:ring-pink-500"
+            className="block text-gray-700 border border-grey-light w-full p-3 rounded mb-4 focus:outline-none focus:border-blue-500 focus:invalid:ring-pink-500"
             name="email"
             placeholder="Email"
             required
@@ -139,7 +139,7 @@ export default function SignUp() {
 
           <input
             type="password"
-            className="block border border-grey-light w-full p-3 rounded mb-4 focus:outline-none focus:border-blue-500"
+            className="block text-gray-700 border border-grey-light w-full p-3 rounded mb-4 focus:outline-none focus:border-blue-500"
             name="password"
             placeholder="Password"
             required
@@ -148,7 +148,7 @@ export default function SignUp() {
           />
           <input
             type="password"
-            className="block border border-grey-light w-full p-3 rounded mb-4 focus:outline-none focus:border-blue-500"
+            className="block text-gray-700 border border-grey-light w-full p-3 rounded mb-4 focus:outline-none focus:border-blue-500"
             name="confirm_password"
             placeholder="Confirm Password"
             required

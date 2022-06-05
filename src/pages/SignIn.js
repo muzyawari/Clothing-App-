@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 
 import { Link } from "react-router-dom";
 
 import PulseLoader from "react-spinners/PulseLoader";
 
 import { logInWithEmailAndPassword } from "../firebase";
+
+import { UserContext } from "../contexts/User.Context";
 
 export default function SignIn() {
   const [email, setEmail] = useState("");
@@ -13,22 +15,34 @@ export default function SignIn() {
   const [message, setMessage] = useState(false);
   const [load, setLoad] = useState(false);
 
+  const { setCurrentUser } = useContext(UserContext);
+
   const handleSignUpForm = async (e) => {
     e.preventDefault();
 
     setLoad(true);
 
-    const response = await logInWithEmailAndPassword(email, password);
+    try {
+      const { user } = await logInWithEmailAndPassword(email, password);
 
-    setEmail("");
-    setPassword("");
+      if (user !== null) {
+        setCurrentUser(user);
+        setMessage(true);
+        setEmail("");
+        setPassword("");
 
-    setLoad(false);
-    setError(false);
+        setLoad(false);
+        setError(false);
+      }
+    } catch (error) {
+      setLoad(false);
+      setError(true);
+      setPassword("");
+    }
   };
 
   return (
-    <div className="bg-grey-lighter min-h-screen flex flex-col mt-6">
+    <div className="bg-grey-lighter min-h-screen flex flex-col ">
       <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
         <form
           className="bg-white px-6 py-8 rounded shadow-md shadow-slate-300	 text-gray-900 w-full"
@@ -112,7 +126,7 @@ export default function SignIn() {
 
           <input
             type="text"
-            className="block border border-grey-light w-full p-3 rounded mb-4 focus:outline-none focus:border-blue-500 focus:invalid:ring-pink-500"
+            className="block text-gray-700	border border-grey-light w-full p-3 rounded mb-4 focus:outline-none focus:border-blue-500 focus:invalid:ring-pink-500"
             name="email"
             placeholder="Email"
             required
@@ -122,7 +136,7 @@ export default function SignIn() {
 
           <input
             type="password"
-            className="block border border-grey-light w-full p-3 rounded mb-4 focus:outline-none focus:border-blue-500"
+            className="block text-gray-700 border border-grey-light w-full p-3 rounded mb-4 focus:outline-none focus:border-blue-500"
             name="password"
             placeholder="Password"
             required
@@ -137,14 +151,14 @@ export default function SignIn() {
             {load ? (
               <PulseLoader color="#DCDCDC" loading={load} size={8} />
             ) : (
-              " Login"
+              "Login"
             )}
           </button>
 
           <div className="text-center text-sm text-gray-500 mt-6">
             Don't have an account?{" "}
             <Link
-              class="no-underline border-b border-blue text-blue"
+              className="no-underline border-b border-blue text-blue"
               to="/sign-up"
             >
               Sign up

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 
 import "../css/Header.styles.css";
 
@@ -6,8 +6,14 @@ import { ReactComponent as Logo } from "../assets/crown.svg";
 
 import { NavLink, Outlet } from "react-router-dom";
 
+import { UserContext } from "../contexts/User.Context";
+
 export default function Header() {
   const [nav, setNav] = useState(false);
+
+  const { currentUser } = useContext(UserContext);
+
+  console.log(currentUser);
 
   return (
     <>
