@@ -50,10 +50,14 @@ export const signOutUser = async () => await signOut(auth);
 export const onAuthStateChangedListener = (callback) =>
   onAuthStateChanged(auth, callback);
 
-const colRef = collection(db, "todo-items");
+const colRef = collection(db, "collections");
 
-export const getProductDate = async () => {
-  const data = await getDocs(colRef);
-
-  console.log(data);
+export const getProductData = async () => {
+  let products = [];
+  await getDocs(colRef).then((snapshot) => {
+    snapshot.docs.forEach((doc) => {
+      products.push({ ...doc.data(), id: doc.id });
+    });
+  });
+  return products;
 };
