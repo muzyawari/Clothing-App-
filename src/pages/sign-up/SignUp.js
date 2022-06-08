@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 import PulseLoader from "react-spinners/PulseLoader";
 
-import { registerWithEmailAndPassword } from "../firebase";
+import { registerWithEmailAndPassword } from "../../firebase";
 
 export default function SignUp() {
   const [fullName, setFullName] = useState("");

@@ -1,4 +1,6 @@
-import HomeGrid from "./HomeGrid";
+import { Routes, Route } from "react-router-dom";
+
+import HomeGrid from "../../components/HomeGrid";
 
 export default function Home() {
   return (

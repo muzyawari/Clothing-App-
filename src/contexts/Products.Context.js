@@ -1,7 +1,11 @@
 import { useState, useEffect, createContext } from "react";
 
-import { getProductData } from "../firebase";
+import { getProductData, addCollectionAndDocuments } from "../firebase";
 
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../firebase";
+
+import SHOP_DATA from "../shop-data.js";
 const ProductContext = createContext();
 
 function ProductProvider({ children }) {
@@ -12,12 +16,13 @@ function ProductProvider({ children }) {
       const categoryMap = await getProductData();
       setProducts(categoryMap);
     };
-
     getCategoriesMap();
   }, []);
 
+  const value = { products };
+
   return (
-    <ProductContext.Provider value={products}>
+    <ProductContext.Provider value={{ products }}>
       {children}
     </ProductContext.Provider>
   );
