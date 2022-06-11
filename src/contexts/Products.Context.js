@@ -9,7 +9,7 @@ import SHOP_DATA from "../shop-data.js";
 const ProductContext = createContext();
 
 function ProductProvider({ children }) {
-  const [products, setProducts] = useState();
+  const [products, setProducts] = useState({});
 
   useEffect(() => {
     const getCategoriesMap = async () => {
@@ -22,9 +22,7 @@ function ProductProvider({ children }) {
   const value = { products };
 
   return (
-    <ProductContext.Provider value={{ products }}>
-      {children}
-    </ProductContext.Provider>
+    <ProductContext.Provider value={value}>{children}</ProductContext.Provider>
   );
 }
 

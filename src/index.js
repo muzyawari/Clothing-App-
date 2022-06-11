@@ -9,13 +9,17 @@ import { UserProvider } from "./contexts/User.Context";
 
 import { ProductProvider } from "./contexts/Products.Context";
 
+import { CartProvider } from "./contexts/Cart.Context";
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
       <UserProvider>
         <ProductProvider>
-          <App />
+          <CartProvider>
+            <App />
+          </CartProvider>
         </ProductProvider>
       </UserProvider>
     </BrowserRouter>
