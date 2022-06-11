@@ -10,10 +10,14 @@ import { signOutUser } from "../firebase";
 
 import { UserContext } from "../contexts/User.Context";
 
+import { CartContext } from "../contexts/Cart.Context";
+
 export default function Header() {
   const [nav, setNav] = useState(false);
 
   const { currentUser, setCurrentUser } = useContext(UserContext);
+
+  const { cart } = useContext(CartContext);
 
   const signOutHandler = async () => {
     await signOutUser();
@@ -97,7 +101,7 @@ export default function Header() {
                   to="/cart"
                   className={({ isActive }) => (isActive ? " bold" : "link")}
                 >
-                  Cart
+                  Cart ({cart})
                 </NavLink>
               </li>
               {currentUser ? (
