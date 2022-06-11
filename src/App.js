@@ -6,6 +6,7 @@ import SignIn from "./pages/sign-up/SignIn";
 import SignUp from "./pages/sign-up/SignUp";
 
 import Category from "./pages/categories/Category";
+import Cart from "./pages/Cart/Cart";
 
 import { useParams } from "react-router-dom";
 
@@ -19,6 +20,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/:id" element={<Category />} />
+        <Route path="/cart" element={<Cart />} />
         <Route path="/sign-in" element={<SignIn />} />
         <Route path="/sign-up" element={<SignUp />} />
       </Routes>
