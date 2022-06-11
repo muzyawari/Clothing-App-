@@ -1,25 +1,44 @@
-import { useContext } from "react";
+import { useState, useContext } from "react";
 
 import { CartContext } from "../../contexts/Cart.Context";
 
+import "../../css/Home.styles.css";
+
 export default function ProductCard({ product }) {
+  const [effect, setEffect] = useState(false);
+
   const { handleItemAction, handleCartAction } = useContext(CartContext);
 
   return (
     <>
-      <div class=" ">
+      <div className=" ">
         <div>
-          {/* <a href="#" class="block h-64 rounded-lg shadow-lg bg-white"></a> */}
-          <img
-            className="block  rounded-lg shadow-lg w-full object-cover h-128	"
-            src={product.imageUrl}
-          ></img>
+          <div className="relative">
+            <img
+              className="block rounded-lg shadow-lg w-full object-cover h-128	"
+              src={product.imageUrl}
+            ></img>
+            <button
+              onClick={() => {
+                handleCartAction();
+                handleItemAction(product);
+                setEffect(true);
+              }}
+              onAnimationEnd={() => setEffect(false)}
+              class={`${
+                effect && "animate-wiggle"
+              } opacity-0 hover:opacity-100 duration-300 pointer-events-auto absolute inset-0 z-10 flex justify-center items-center text-3xl text-white font-semibold`}
+            >
+              Add To Cart
+            </button>
+          </div>
 
-          <div class="flex items-center justify-between mt-3">
+          <div className="flex items-center justify-between mt-3">
             <div>
-              <h2 class="font-medium">{product.name}</h2>
+              <h2 className="font-medium">{product.name}</h2>
             </div>
-            <span class="flex items-center h-8 bg-indigo-200 text-indigo-600 text-sm px-2 rounded">
+
+            <span className="flex items-center h-8 bg-indigo-200 text-indigo-600 text-sm px-2 rounded">
               ${product.price}
             </span>
           </div>
@@ -33,9 +52,9 @@ export default function ProductCard({ product }) {
 }
 
 {
-  /* <div className=" md:w-1/3 py-10 ">
-<div className="bg-white shadow-lg hover:shadow-xl rounded-lg w-80">
-	<img className="object-fill w-full" src={product.imageUrl}></img>
+  /* <div classNameName=" md:w-1/3 py-10 ">
+<div classNameName="bg-white shadow-lg hover:shadow-xl rounded-lg w-80">
+	<img classNameName="object-fill w-full" src={product.imageUrl}></img>
 	<div className="flex justify-between items-start px-2 pt-2">
 		<div className="p-2 flex-grow">
 			<h1 className="font-medium text-xl text-gray-700">

@@ -6,7 +6,7 @@ import SignIn from "./pages/sign-up/SignIn";
 import SignUp from "./pages/sign-up/SignUp";
 
 import Category from "./pages/categories/Category";
-import Cart from "./pages/Cart/Cart";
+import Cart from "./pages/cart/Cart";
 
 import { useParams } from "react-router-dom";
 
