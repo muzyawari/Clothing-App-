@@ -21,9 +21,9 @@ function CartProvider({ children }) {
         }
         return product;
       });
+
       setItem(updatedCart);
     } else {
-      console.log("a");
       // product is new to the cart
       setItem([
         ...item,
@@ -35,22 +35,44 @@ function CartProvider({ children }) {
     }
   };
 
-  const handleCartAction = () => {
-    setCart((prevCart) => prevCart + 1);
+  const handleProductDelete = (id) => {
+    const updatedCart = item.filter((product) => product.id !== id);
+    setItem(updatedCart);
+  };
+
+  const handleCartCount = item.reduce(
+    (total, product) => total + product.quantity,
+    0
+  );
+
+  const handleReduceQuantity = (itemToAdd) => {
+    const existingProduct = item.find((product) => product.id === itemToAdd.id);
+
+    const updatedCart = item.map((product) => {
+      if (product.id === itemToAdd.id) {
+        return {
+          ...product,
+          quantity: product.quantity - 1,
+        };
+      }
+      return product;
+    });
+    setItem(updatedCart);
+
+    if (existingProduct.quantity === 0) {
+      const updatedCart = item.filter((product) => product.id !== itemToAdd.id);
+      setItem(updatedCart);
+    }
   };
 
   const value = {
     cart,
-    setCart,
     item,
-    setItem,
     handleItemAction,
-    handleCartAction,
+    handleCartCount,
+    handleProductDelete,
+    handleReduceQuantity,
   };
-
-  console.log(cart);
-
-  console.log(item);
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 }

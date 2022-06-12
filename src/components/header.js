@@ -17,7 +17,7 @@ export default function Header() {
 
   const { currentUser, setCurrentUser } = useContext(UserContext);
 
-  const { cart } = useContext(CartContext);
+  const { handleCartCount } = useContext(CartContext);
 
   const signOutHandler = async () => {
     await signOutUser();
@@ -101,7 +101,7 @@ export default function Header() {
                   to="/cart"
                   className={({ isActive }) => (isActive ? " bold" : "link")}
                 >
-                  Cart ({cart})
+                  Cart ({handleCartCount})
                 </NavLink>
               </li>
               {currentUser ? (

@@ -7,7 +7,7 @@ import "../../css/Home.styles.css";
 export default function ProductCard({ product }) {
   const [effect, setEffect] = useState(false);
 
-  const { handleItemAction, handleCartAction } = useContext(CartContext);
+  const { item, handleItemAction } = useContext(CartContext);
 
   return (
     <>
@@ -20,17 +20,28 @@ export default function ProductCard({ product }) {
             ></img>
             <button
               onClick={() => {
-                handleCartAction();
                 handleItemAction(product);
                 setEffect(true);
               }}
               onAnimationEnd={() => setEffect(false)}
-              class={`${
+              className={`${
                 effect && "animate-wiggle"
               } opacity-0 hover:opacity-100 duration-300 pointer-events-auto absolute inset-0 z-10 flex justify-center items-center text-3xl text-white font-semibold`}
             >
               Add To Cart
             </button>
+            {item.map((stateItem) => {
+              if (stateItem.id == product.id) {
+                return (
+                  <span
+                    key={stateItem.id}
+                    className="absolute  right-[-10px] top-[-10px] rounded-full bg-red-400 w-6 h-6 top right p-1 m-0 text-white font-mono text-sm  leading-tight text-center"
+                  >
+                    {stateItem.quantity}
+                  </span>
+                );
+              }
+            })}
           </div>
 
           <div className="flex items-center justify-between mt-3">
