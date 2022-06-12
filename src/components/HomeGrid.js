@@ -5,7 +5,7 @@ import { Outlet, Link } from "react-router-dom";
 export default function HomeGrid() {
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-x-4 md:pl-6 pl-3  w-full">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-x-4 md:pl-6 px-3 w-full">
         <div className="relative group flex justify-center items-center h-full w-full">
           <img
             className="home__image"
@@ -71,7 +71,7 @@ export default function HomeGrid() {
           <div className="absolute opacity-0 group-hover:opacity-100 transition duration-500 bottom-3 py-6 z-0 px-20 w-36 bg-white bg-opacity-50"></div>
         </div>
       </div>
-      <div className="relative group hidden md:flex justify-center items-center h-full w-full mt-4 md:mt-8 md:pl-6 lg:hidden">
+      <div className="relative group hidden md:flex justify-center items-center h-full w-full mt-4 md:mt-8 md:pl-6 px-3 lg:hidden">
         <img
           className="object-center object-cover h-full w-full hidden md:block"
           src="https://i.ibb.co/6FjW19n/olive-tatiane-Im-Ez-F9-B91-Mk-unsplash-2.png"
