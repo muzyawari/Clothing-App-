@@ -57,12 +57,16 @@ function CartProvider({ children }) {
       }
       return product;
     });
+
     setItem(updatedCart);
 
-    if (existingProduct.quantity === 0) {
-      const updatedCart = item.filter((product) => product.id !== itemToAdd.id);
-      setItem(updatedCart);
-    }
+    const updatedItem = updatedCart.map((product) => {
+      if (product.quantity === 0) {
+        handleProductDelete(product.id);
+      }
+    });
+
+    console.log(item);
   };
 
   const value = {
