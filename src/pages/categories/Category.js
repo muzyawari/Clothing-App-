@@ -4,17 +4,23 @@ import { useParams } from "react-router-dom";
 
 import { ProductContext } from "../../contexts/Products.Context";
 
+import Loader from "../../components/Loader";
+
 import ProductCard from "../products/ProductCard";
 
 export default function Category() {
   const { id } = useParams();
-  const { products } = useContext(ProductContext);
+  const { products, isLoading } = useContext(ProductContext);
 
   const [categories, setCategories] = useState(products[id]);
 
   useEffect(() => {
     setCategories(products[id]);
   }, [id, products]);
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <>

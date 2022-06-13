@@ -10,6 +10,7 @@ const ProductContext = createContext();
 
 function ProductProvider({ children }) {
   const [products, setProducts] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const getCategoriesMap = async () => {
@@ -17,9 +18,10 @@ function ProductProvider({ children }) {
       setProducts(categoryMap);
     };
     getCategoriesMap();
+    setIsLoading(false);
   }, []);
 
-  const value = { products };
+  const value = { products, isLoading };
 
   return (
     <ProductContext.Provider value={value}>{children}</ProductContext.Provider>
