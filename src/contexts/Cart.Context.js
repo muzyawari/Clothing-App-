@@ -65,8 +65,6 @@ function CartProvider({ children }) {
         handleProductDelete(product.id);
       }
     });
-
-    console.log(item);
   };
 
   const value = {

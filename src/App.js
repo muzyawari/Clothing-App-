@@ -16,16 +16,17 @@ function App() {
   return (
     <>
       <Header />
+      <div className="min-h-screen">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/:id" element={<Category />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/sign-in" element={<SignIn />} />
+          <Route path="/sign-up" element={<SignUp />} />
+        </Routes>
 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/:id" element={<Category />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/sign-in" element={<SignIn />} />
-        <Route path="/sign-up" element={<SignUp />} />
-      </Routes>
-
-      <Footer />
+        <Footer />
+      </div>
     </>
   );
 }

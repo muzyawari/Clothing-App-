@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import PulseLoader from "react-spinners/PulseLoader";
 
@@ -13,6 +13,14 @@ export default function SignIn() {
   const [message, setMessage] = useState(false);
   const [load, setLoad] = useState(false);
 
+  const navigate = useNavigate();
+
+  function delay(n) {
+    return new Promise(function (resolve) {
+      setTimeout(resolve, n * 1000);
+    });
+  }
+
   const handleSignUpForm = async (e) => {
     e.preventDefault();
 
@@ -23,11 +31,15 @@ export default function SignIn() {
 
       if (user !== null) {
         setMessage(true);
+
         setEmail("");
         setPassword("");
 
         setLoad(false);
         setError(false);
+        await delay(2);
+
+        navigate("/", { replace: true });
       }
     } catch (error) {
       setLoad(false);
